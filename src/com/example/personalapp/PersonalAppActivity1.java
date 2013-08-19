@@ -27,8 +27,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.adapter.PersonalAppCategoryItemAdapter;
 import com.example.adapter.PersonalAppListAdapter;
 import com.example.adapter.ViewFlowAdapter1;

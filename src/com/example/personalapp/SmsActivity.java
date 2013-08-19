@@ -198,10 +198,6 @@ public class SmsActivity extends Activity implements OnRefreshListener,
 			it.putExtra("sms_body", getResources().getString(R.string.sms_text));
 			startActivity(it);
 			break;
-		case R.id.receiver_add:
-			Intent intent = new Intent(this, SLContactActivity.class);
-			startActivityForResult(intent, 100);
-			break;
 		
 		}
 	}

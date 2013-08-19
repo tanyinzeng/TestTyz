@@ -6,8 +6,6 @@ import java.io.InputStream;
 import java.util.List;
 import com.example.constants.AsyncBitmapLoader;
 import com.example.constants.Constants;
-import com.example.constants.LogUtil;
-import com.example.constants.SharedPreferencemanager;
 import com.example.constants.AsyncBitmapLoader.ImageCallBack;
 import com.example.entity.PersonRecordEntity;
 import com.example.personalapp.R;
@@ -28,12 +26,12 @@ public class ViewFlowAdapter4 extends BaseAdapter {
 	private PersonRecordEntity entity;
 	private AsyncBitmapLoader asynLoader;
 
-	public ViewFlowAdapter4(Context ctx, PersonRecordEntity entity) {
+	public ViewFlowAdapter4(Context ctx, PersonRecordEntity entity,String fromWhere) {
 		this.mContext = ctx;
 		this.mInflater = LayoutInflater.from(mContext);
 		this.imgUrl = entity.getImgUrls();
 		this.entity = entity;
-		asynLoader = new AsyncBitmapLoader(ctx,"vir");
+		asynLoader = new AsyncBitmapLoader(ctx,fromWhere);
 	}
 
 	@Override

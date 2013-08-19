@@ -3,11 +3,17 @@ package com.example.constants;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -23,6 +29,9 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 
 /**
  * Tools for handler picture
@@ -401,5 +410,93 @@ public final class ImageTools {
 			}
 		}
 	}
+
+	public static Bitmap dealWithCarmeaData() {
+		Bitmap bitmap = BitmapFactory.decodeFile(Environment
+				.getExternalStorageDirectory() + "/image.jpg");
+		Bitmap newBitmap = zoomBitmap(bitmap, bitmap.getWidth()
+				/ Constants.USER_STATUS.SCALE, bitmap.getHeight()
+				/ Constants.USER_STATUS.SCALE);
+		// 由于Bitmap内存占用较大，这里需要回收内存，否则会报out of memory异常
+		bitmap.recycle();
+		return newBitmap;
+	}
+
+	public static Bitmap dealWithPhotoPicked(Context context, Uri uri) {
+		Bitmap smallBitmap = null;
+		try {
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inSampleSize = 2;
+			options.inJustDecodeBounds = false;
+			options.inInputShareable = true;
+			options.inPurgeable = true;
+			options.inPreferredConfig = Bitmap.Config.RGB_565;
+			Bitmap photo = BitmapFactory.decodeStream(context
+					.getContentResolver().openInputStream(uri), null, options);
+			if (photo != null) {
+				// 为防止原始图片过大导致内存溢出，这里先缩小原图显示，然后释放原始Bitmap占用的内存
+				smallBitmap = zoomBitmap(photo,
+						photo.getWidth() / Constants.USER_STATUS.SCALE,
+						photo.getHeight() / Constants.USER_STATUS.SCALE);
+				// 释放原始图片占用的内存，防止out of memory异常发生
+				photo.recycle();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return smallBitmap;
+	}
+	
+	public static Bitmap decodeUriAsBitmap(String imgUrl) {
+		Bitmap bitmap = null;
+		try {
+			InputStream inputStream = new FileInputStream(imgUrl + ".png");
+			bitmap = BitmapFactory.decodeStream(inputStream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return bitmap;
+	}
+	
+	public static void ShowPickDialog(final Activity context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("图片来源");
+		builder.setNegativeButton("取消", null);
+		builder.setItems(new String[] { "拍照", "相册" },
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						switch (which) {
+						case 0:
+							Intent openCameraIntent = new Intent(
+									MediaStore.ACTION_IMAGE_CAPTURE);
+							Uri imageUri = Uri.fromFile(new File(Environment
+									.getExternalStorageDirectory(), "image.jpg"));
+							// 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
+							openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+									imageUri);
+							context.startActivityForResult(openCameraIntent,
+									Constants.USER_STATUS.CAMERA_WITH_DATA);
+							break;
+
+						case 1:
+							Intent openAlbumIntent = new Intent(
+									Intent.ACTION_GET_CONTENT);
+							openAlbumIntent.setType("image/*");
+							context.startActivityForResult(
+									openAlbumIntent,
+									Constants.USER_STATUS.PHOTO_PICKED_WITH_DATA);
+							break;
+
+						default:
+							break;
+						}
+					}
+				});
+		builder.create().show();
+	}
+
 
 }

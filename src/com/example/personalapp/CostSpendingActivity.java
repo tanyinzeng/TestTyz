@@ -395,10 +395,6 @@ public class CostSpendingActivity extends Activity implements OnClickListener,
 	};
 
 	public void hideInputMethod() {
-		// InputMethodManager imm = (InputMethodManager)
-		// getSystemService(INPUT_METHOD_SERVICE);
-		// imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-		// InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
 	@Override

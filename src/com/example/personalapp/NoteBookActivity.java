@@ -1,9 +1,6 @@
 package com.example.personalapp;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,17 +10,13 @@ import java.util.Map;
 import org.taptwo.android.widget.CircleFlowIndicator;
 import org.taptwo.android.widget.ViewFlow;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -196,10 +189,12 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				if (noteBarAdapter != null) {
 					noteBarAdapter.notifyDataSetChanged();
 				}
-				String key = noteBars.get(currentItem).getBarName();
-				noteBookAdapter = new NoteBookAdapter(NoteBookActivity.this,
-						MediaCenter.getIns().getMapsNoteBookEntitys(key));
-				noteContentLv.setAdapter(noteBookAdapter);
+				if(noteBars != null && currentItem<noteBars.size()){
+					String key = noteBars.get(currentItem).getBarName();
+					noteBookAdapter = new NoteBookAdapter(NoteBookActivity.this,
+							MediaCenter.getIns().getMapsNoteBookEntitys(key));
+					noteContentLv.setAdapter(noteBookAdapter);
+				}
 			}
 		});
 	}
@@ -234,10 +229,12 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				if (noteBarAdapter != null) {
 					noteBarAdapter.notifyDataSetChanged();
 				}
-				String key = noteBars.get(currentItem).getBarName();
-				noteBookAdapter = new NoteBookAdapter(NoteBookActivity.this,
-						MediaCenter.getIns().getMapsNoteBookEntitys(key));
-				noteContentLv.setAdapter(noteBookAdapter);
+				if(noteBars != null && currentItem<noteBars.size()){
+					String key = noteBars.get(currentItem).getBarName();
+					noteBookAdapter = new NoteBookAdapter(NoteBookActivity.this,
+							MediaCenter.getIns().getMapsNoteBookEntitys(key));
+					noteContentLv.setAdapter(noteBookAdapter);
+				}
 			}
 		});
 	}
@@ -357,7 +354,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 								.execute(new String[] { Constants.GET_QUEST_URI.GET_PICTURE_URI
 										+ imgName + ".png" });
 					} else {
-						noteImg.setImageBitmap(decodeUriAsBitmap(imgName));
+						noteImg.setImageBitmap(ImageTools.decodeUriAsBitmap(imgName));
 					}
 					tvNoteDesc.setText(noteBookEntity.getNoteContent());
 					tvNoteTitle.setText(noteBookEntity.getNoteTitle());
@@ -380,17 +377,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 		btnSure.setOnClickListener(this);
 	}
 
-	private Bitmap decodeUriAsBitmap(String imgUrl) {
-		Bitmap bitmap = null;
-		try {
-			InputStream inputStream = new FileInputStream(imgUrl + ".png");
-			bitmap = BitmapFactory.decodeStream(inputStream);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return bitmap;
-	}
+	
 
 	String key = "";
 	private boolean isEdit = false;
@@ -550,6 +537,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				secondLayout.setVisibility(View.GONE);
 				btnWrite.setVisibility(View.VISIBLE);
 				btnSure.setVisibility(View.GONE);
+				isEdit = false;
 			}
 
 			break;
@@ -644,48 +632,9 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				MediaCenter.getIns().clearPhotos();
-				ShowPickDialog();
+				ImageTools.ShowPickDialog(NoteBookActivity.this);
 			}
 		});
-	}
-
-	private void ShowPickDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("图片来源");
-		builder.setNegativeButton("取消", null);
-		builder.setItems(new String[] { "拍照", "相册" },
-				new DialogInterface.OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						switch (which) {
-						case 0:
-							Intent openCameraIntent = new Intent(
-									MediaStore.ACTION_IMAGE_CAPTURE);
-							Uri imageUri = Uri.fromFile(new File(Environment
-									.getExternalStorageDirectory(), "image.jpg"));
-							// 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
-							openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-									imageUri);
-							startActivityForResult(openCameraIntent,
-									Constants.USER_STATUS.CAMERA_WITH_DATA);
-							break;
-
-						case 1:
-							Intent openAlbumIntent = new Intent(
-									Intent.ACTION_GET_CONTENT);
-							openAlbumIntent.setType("image/*");
-							startActivityForResult(
-									openAlbumIntent,
-									Constants.USER_STATUS.PHOTO_PICKED_WITH_DATA);
-							break;
-
-						default:
-							break;
-						}
-					}
-				});
-		builder.create().show();
 	}
 
 	@Override
@@ -693,9 +642,6 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 		super.onActivityResult(requestCode, resultCode, data);
 		LogUtil.log("resultCode = " + resultCode);
 		if (resultCode != Activity.RESULT_OK) {// result is not correct
-			LogUtil.log("requestCode = " + requestCode);
-			LogUtil.log("resultCode = " + resultCode);
-			LogUtil.log("data = " + data);
 			return;
 		} else {
 			switch (requestCode) {
@@ -703,25 +649,9 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				// 照片的原始资源地址
 				Uri originalUri = data.getData();
 				try {
-					// 使用ContentProvider通过URI获取原始图片
-					BitmapFactory.Options options = new BitmapFactory.Options();
-					options.inSampleSize = 2;
-					options.inJustDecodeBounds = false;
-					options.inInputShareable = true;
-					options.inPurgeable = true;
-					options.inPreferredConfig = Bitmap.Config.RGB_565;
-					Bitmap photo = BitmapFactory.decodeStream(
-							getContentResolver().openInputStream(originalUri),
-							null, options);
-					if (photo != null) {
-						// 为防止原始图片过大导致内存溢出，这里先缩小原图显示，然后释放原始Bitmap占用的内存
-						Bitmap smallBitmap = ImageTools
-								.zoomBitmap(photo, photo.getWidth()
-										/ Constants.USER_STATUS.SCALE,
-										photo.getHeight()
-												/ Constants.USER_STATUS.SCALE);
-						// 释放原始图片占用的内存，防止out of memory异常发生
-						photo.recycle();
+//					// 使用ContentProvider通过URI获取原始图片
+					Bitmap smallBitmap = ImageTools.dealWithPhotoPicked(context, originalUri);
+					if(smallBitmap != null){
 						String imgName = String.valueOf(System
 								.currentTimeMillis());
 						ImageTools.savePhotoToSDCard(smallBitmap, localNote,
@@ -732,20 +662,15 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 						gridView.setAdapter(photoAdapter);
 						photoAdapter.notifyDataSetChanged();
 					}
+						
+//					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				break;
 			case Constants.USER_STATUS.CAMERA_WITH_DATA:
 				try {
-					// 将保存在本地的图片取出并缩小后显示在界面上
-					Bitmap bitmap = BitmapFactory.decodeFile(Environment
-							.getExternalStorageDirectory() + "/image.jpg");
-					Bitmap newBitmap = ImageTools.zoomBitmap(bitmap,
-							bitmap.getWidth() / Constants.USER_STATUS.SCALE,
-							bitmap.getHeight() / Constants.USER_STATUS.SCALE);
-					// 由于Bitmap内存占用较大，这里需要回收内存，否则会报out of memory异常
-					bitmap.recycle();
+					Bitmap newBitmap = ImageTools.dealWithCarmeaData();
 
 					// 将处理过的图片显示在界面上，并保存到本地
 					String imgName = String.valueOf(System.currentTimeMillis());

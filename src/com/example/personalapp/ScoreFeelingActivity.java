@@ -29,20 +29,16 @@ import com.example.entity.ScoreContentEntity;
 import com.example.logic.MediaCenter;
 import com.example.view.SLCustomListView;
 import com.example.view.SLCustomListView.OnRefreshListener;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -148,7 +144,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 
 	private ImageView noteImg;
 	private Button btnShare;
-	private TextView tvNoteDesc,tvNoteTime;
+	private TextView tvNoteDesc, tvNoteTime;
 
 	private void initThirdLayout() {
 		thirdLayout = (RelativeLayout) findViewById(R.id.note_thirdLayout);
@@ -156,7 +152,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 		noteImg.setOnClickListener(this);
 		btnShare = (Button) findViewById(R.id.note_share);
 		tvNoteDesc = (TextView) findViewById(R.id.note_desc);
-		tvNoteTime = (TextView)findViewById(R.id.note_time);
+		tvNoteTime = (TextView) findViewById(R.id.note_time);
 		btnShare.setOnClickListener(this);
 	}
 
@@ -291,51 +287,51 @@ public class ScoreFeelingActivity extends BaseActivity implements
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				MediaCenter.getIns().clearPhotos();
-				ShowPickDialog();
+				ImageTools.ShowPickDialog(ScoreFeelingActivity.this);
 			}
 		});
 		btnSubmit = (Button) findViewById(R.id.submit_photo_et);
 		btnSubmit.setOnClickListener(this);
 	}
 
-	private void ShowPickDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("图片来源");
-		builder.setNegativeButton("取消", null);
-		builder.setItems(new String[] { "拍照", "相册" },
-				new DialogInterface.OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						switch (which) {
-						case 0:
-							Intent openCameraIntent = new Intent(
-									MediaStore.ACTION_IMAGE_CAPTURE);
-							Uri imageUri = Uri.fromFile(new File(Environment
-									.getExternalStorageDirectory(), "image.jpg"));
-							// 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
-							openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-									imageUri);
-							startActivityForResult(openCameraIntent,
-									Constants.USER_STATUS.CAMERA_WITH_DATA);
-							break;
-
-						case 1:
-							Intent openAlbumIntent = new Intent(
-									Intent.ACTION_GET_CONTENT);
-							openAlbumIntent.setType("image/*");
-							startActivityForResult(
-									openAlbumIntent,
-									Constants.USER_STATUS.PHOTO_PICKED_WITH_DATA);
-							break;
-
-						default:
-							break;
-						}
-					}
-				});
-		builder.create().show();
-	}
+	// private void ShowPickDialog() {
+	// AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	// builder.setTitle("图片来源");
+	// builder.setNegativeButton("取消", null);
+	// builder.setItems(new String[] { "拍照", "相册" },
+	// new DialogInterface.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(DialogInterface dialog, int which) {
+	// switch (which) {
+	// case 0:
+	// Intent openCameraIntent = new Intent(
+	// MediaStore.ACTION_IMAGE_CAPTURE);
+	// Uri imageUri = Uri.fromFile(new File(Environment
+	// .getExternalStorageDirectory(), "image.jpg"));
+	// // 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
+	// openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+	// imageUri);
+	// startActivityForResult(openCameraIntent,
+	// Constants.USER_STATUS.CAMERA_WITH_DATA);
+	// break;
+	//
+	// case 1:
+	// Intent openAlbumIntent = new Intent(
+	// Intent.ACTION_GET_CONTENT);
+	// openAlbumIntent.setType("image/*");
+	// startActivityForResult(
+	// openAlbumIntent,
+	// Constants.USER_STATUS.PHOTO_PICKED_WITH_DATA);
+	// break;
+	//
+	// default:
+	// break;
+	// }
+	// }
+	// });
+	// builder.create().show();
+	// }
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -353,24 +349,9 @@ public class ScoreFeelingActivity extends BaseActivity implements
 				Uri originalUri = data.getData();
 				try {
 					// 使用ContentProvider通过URI获取原始图片
-					BitmapFactory.Options options = new BitmapFactory.Options();
-					options.inSampleSize = 2;
-					options.inJustDecodeBounds = false;
-					options.inInputShareable = true;
-					options.inPurgeable = true;
-					options.inPreferredConfig = Bitmap.Config.RGB_565;
-					Bitmap photo = BitmapFactory.decodeStream(
-							getContentResolver().openInputStream(originalUri),
-							null, options);
-					if (photo != null) {
-						// 为防止原始图片过大导致内存溢出，这里先缩小原图显示，然后释放原始Bitmap占用的内存
-						Bitmap smallBitmap = ImageTools
-								.zoomBitmap(photo, photo.getWidth()
-										/ Constants.USER_STATUS.SCALE,
-										photo.getHeight()
-												/ Constants.USER_STATUS.SCALE);
-						// 释放原始图片占用的内存，防止out of memory异常发生
-						photo.recycle();
+					Bitmap smallBitmap = ImageTools.dealWithPhotoPicked(
+							context, originalUri);
+					if (smallBitmap != null) {
 						String imgName = String.valueOf(System
 								.currentTimeMillis());
 						ImageTools.savePhotoToSDCard(smallBitmap,
@@ -388,14 +369,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 			case Constants.USER_STATUS.CAMERA_WITH_DATA:
 				try {
 					// 将保存在本地的图片取出并缩小后显示在界面上
-					Bitmap bitmap = BitmapFactory.decodeFile(Environment
-							.getExternalStorageDirectory() + "/image.jpg");
-					Bitmap newBitmap = ImageTools.zoomBitmap(bitmap,
-							bitmap.getWidth() / Constants.USER_STATUS.SCALE,
-							bitmap.getHeight() / Constants.USER_STATUS.SCALE);
-					// 由于Bitmap内存占用较大，这里需要回收内存，否则会报out of memory异常
-					bitmap.recycle();
-
+					Bitmap newBitmap = ImageTools.dealWithCarmeaData();
 					// 将处理过的图片显示在界面上，并保存到本地
 					String imgName = String.valueOf(System.currentTimeMillis());
 					ImageTools.savePhotoToSDCard(newBitmap, localScorePath,
@@ -537,11 +511,12 @@ public class ScoreFeelingActivity extends BaseActivity implements
 			break;
 		case R.id.back:
 			if (twoLayout.getVisibility() == View.VISIBLE) {
-				if(isFeelEdit){
+				if (isFeelEdit) {
 					isFeelEdit = false;
 					twoLayout.setVisibility(View.GONE);
 					thirdLayout.setVisibility(View.VISIBLE);
-				}else{
+				} else {
+					isScoreEdit = false;
 					firstLayout.setVisibility(View.VISIBLE);
 					twoLayout.setVisibility(View.GONE);
 					btnAdd.setVisibility(View.VISIBLE);
@@ -582,8 +557,8 @@ public class ScoreFeelingActivity extends BaseActivity implements
 					etFeelTitle.requestFocus();
 					return;
 				}
-				if(isFeelEdit){
-					if(imgUrls.size()>0){
+				if (isFeelEdit) {
+					if (imgUrls.size() > 0) {
 						feelContent.setImgUrl(imgUrls);
 						feelContent.setOnline(false);
 					}
@@ -592,7 +567,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 					Date date = new Date();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					feelContent.setTime(sdf.format(date));
-				}else{
+				} else {
 					if (imgUrls.size() == 0) {
 						Toast.makeText(this, "请添加图片", Toast.LENGTH_LONG).show();
 						return;
@@ -626,6 +601,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 				firstLayout.setVisibility(View.VISIBLE);
 				btnSure.setVisibility(View.GONE);
 				btnAdd.setVisibility(View.VISIBLE);
+				isFeelEdit = false;
 			} else if (thirdLayout.getVisibility() == View.VISIBLE) {
 				thirdLayout.setVisibility(View.GONE);
 				twoLayout.setVisibility(View.VISIBLE);
@@ -634,8 +610,8 @@ public class ScoreFeelingActivity extends BaseActivity implements
 				btnSure.setText(R.string.sure);
 				setStar(feelContent.getStars());
 				etFeelTitle.setText(feelContent.getContent());
-				photoAdapter = new NoteSubmitPhotoAdapter(this, feelContent.isOnline(),
-						feelContent.getImgUrl());
+				photoAdapter = new NoteSubmitPhotoAdapter(this,
+						feelContent.isOnline(), feelContent.getImgUrl());
 				gridView.setAdapter(photoAdapter);
 			} else {
 				if (StringUtil.isEmpty(etScoreName.getText().toString())) {
@@ -658,9 +634,6 @@ public class ScoreFeelingActivity extends BaseActivity implements
 					score.setName(etScoreName.getText().toString());
 					score.setScore(Integer.parseInt(etScore.getText()
 							.toString()));
-					// Date date = new Date();
-					// SimpleDateFormat sdf = new
-					// SimpleDateFormat("yyyy-MM-dd");
 					score.setTime(etScoreTime.getText().toString());
 					MediaCenter.getIns().addScoreContent(score);
 				}
@@ -684,6 +657,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 				firstLayout.setVisibility(View.VISIBLE);
 				btnSure.setVisibility(View.GONE);
 				btnAdd.setVisibility(View.VISIBLE);
+				isScoreEdit = false;
 			}
 			tvTitle.setText("考核、心情");
 			break;
@@ -696,6 +670,7 @@ public class ScoreFeelingActivity extends BaseActivity implements
 			etFeelTitle.setText("");
 			etScore.setText("");
 			etScoreName.setText("");
+			etScoreTime.setText("");
 			if (btnFeeling.isSelected()) {
 				tvTitle.setText("添加心情");
 				firstLayout.setVisibility(View.GONE);
@@ -768,9 +743,8 @@ public class ScoreFeelingActivity extends BaseActivity implements
 			thirdLayout.setVisibility(View.GONE);
 			topLayout.setVisibility(View.GONE);
 			fourlayout.setVisibility(View.VISIBLE);
-			mViewFlow.setAdapter(
-					new ViewFlowAdapter7(this, feelContent,
-							Constants.FTP_STATUS.WORKSPACE_CHENGJI_INFO), 0);
+			mViewFlow.setAdapter(new ViewFlowAdapter7(this, feelContent,
+					Constants.FTP_STATUS.WORKSPACE_CHENGJI_INFO), 0);
 			break;
 		}
 	}
@@ -790,11 +764,12 @@ public class ScoreFeelingActivity extends BaseActivity implements
 	@Override
 	public void onBackPressed() {
 		if (twoLayout.getVisibility() == View.VISIBLE) {
-			if(isFeelEdit){
+			if (isFeelEdit) {
 				isFeelEdit = false;
 				twoLayout.setVisibility(View.GONE);
 				thirdLayout.setVisibility(View.VISIBLE);
-			}else{
+			} else {
+				isScoreEdit = false;
 				firstLayout.setVisibility(View.VISIBLE);
 				twoLayout.setVisibility(View.GONE);
 				btnAdd.setVisibility(View.VISIBLE);
