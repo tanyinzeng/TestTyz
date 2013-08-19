@@ -60,7 +60,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 	private Button btnBack, btnWrite, btnSure, btnShare;
 	private NoteBarAdapter noteBarAdapter;
 	private NoteBookAdapter noteBookAdapter;
-	private int level = 0;// ĞÇ¼¶
+	private int level = 0;// é”Ÿè§’ç¡·æ‹·
 	private List<ImageButton> stars = new ArrayList<ImageButton>();
 	private ImageButton star1, star2, star3, star4, star5;
 	private ImageView noteImg;
@@ -78,7 +78,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 	private NoteSubmitPhotoAdapter photoAdapter;
 	// private XmlTool xmlTool;
 	private String localMainPath, localNote, phone, remotePath;
-	private char[] ch = { 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù', 'Æß', '°Ë', '¾Å' };
+	private char[] ch = { 'ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­', 'ä¸ƒ', 'å…«', 'ä¹' };
 	private NoteBookEntity noteBookEntity;
 	private List<String> imgUrls;
 	private Context context;
@@ -288,7 +288,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 					secondLayout.setVisibility(View.VISIBLE);
 					btnWrite.setVisibility(View.GONE);
 					btnSure.setVisibility(View.VISIBLE);
-					tvTitle.setText("Ìí¼Ó¼ÇÊÂ±¾");
+					tvTitle.setText("æ·»åŠ è®°äº‹æœ¬");
 					photoAdapter = new NoteSubmitPhotoAdapter(context, false,
 							imgUrls);
 					gridView.setAdapter(photoAdapter);
@@ -360,7 +360,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 					tvNoteTitle.setText(noteBookEntity.getNoteTitle());
 					tvNoteTime.setText(noteBookEntity.getNoteDate());
 				} else {
-					Toast.makeText(context, "Í¼Æ¬Ã»ÓĞÉÏ´«³É¹¦", Toast.LENGTH_LONG)
+					Toast.makeText(context, "å›¾ç‰‡æ²¡é”Ÿæ–¤æ‹·é”Ÿè¾ƒè¾¾æ‹·é”Ÿç¼´ç™¸æ‹·", Toast.LENGTH_LONG)
 							.show();
 				}
 
@@ -405,7 +405,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 					noteThirdLayout.setVisibility(View.VISIBLE);
 					btnSure.setText(R.string.edit);
 				} else {
-					key = "µÚ" + ch[currentItem] + "½×¶Î";
+					key = "é”Ÿæ–¤æ‹·" + ch[currentItem] + "é”Ÿé˜¶è®¹æ‹·";
 					List<NoteBookEntity> entitys = MediaCenter.getIns()
 							.getMapsNoteBookEntitys(key);
 					if (entitys == null) {
@@ -415,7 +415,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 					secondLayout.setVisibility(View.GONE);
 					btnWrite.setVisibility(View.VISIBLE);
 					btnSure.setVisibility(View.GONE);
-					tvTitle.setText("¼ÇÊÂ±¾");
+					tvTitle.setText("é”Ÿæ–¤æ‹·é”Ÿé“°æ†‹æ‹·");
 				}
 			} else if (noteThirdLayout.getVisibility() == View.VISIBLE) {
 				noteThirdLayout.setVisibility(View.GONE);
@@ -437,7 +437,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 			secondLayout.setVisibility(View.VISIBLE);
 			btnWrite.setVisibility(View.GONE);
 			btnSure.setVisibility(View.VISIBLE);
-			tvTitle.setText("Ìí¼Ó¼ÇÊÂ±¾");
+			tvTitle.setText("æ·»åŠ è®°äº‹æœ¬");
 			photoAdapter = new NoteSubmitPhotoAdapter(context, false, imgUrls);
 			gridView.setAdapter(photoAdapter);
 			setStar(0);
@@ -462,12 +462,12 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				gridView.setAdapter(photoAdapter);
 			} else {
 				if (StringUtil.isEmpty(etNoteTitle.getText().toString())) {
-					Toast.makeText(this, "±êÌâ²»ÄÜÎª¿Õ", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "é”Ÿæ–¤æ‹·é”Ÿè§£ä¸é”Ÿæ–¤æ‹·ä¸ºé”Ÿæ–¤æ‹·", Toast.LENGTH_SHORT).show();
 					etNoteTitle.requestFocus();
 					return;
 				}
 				if (StringUtil.isEmpty(etNoteContent.getText().toString())) {
-					Toast.makeText(this, "ÄÚÈİ²»ÄÜÎª¿Õ", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "é”Ÿæ–¤æ‹·é”Ÿæ·è¯§æ‹·é”Ÿæ–¤æ‹·ä¸ºé”Ÿæ–¤æ‹·", Toast.LENGTH_SHORT).show();
 					etNoteContent.requestFocus();
 					return;
 				}
@@ -486,10 +486,10 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 					noteBookEntity.setStarTag(level);
 				} else {
 					if (imgUrls != null && imgUrls.size() == 0) {
-						Toast.makeText(this, "ÇëÌí¼ÓÍ¼Æ¬", Toast.LENGTH_LONG).show();
+						Toast.makeText(this, "è¯·æ·»åŠ å›¾ç‰‡", Toast.LENGTH_LONG).show();
 						return;
 					}
-					key = "µÚ" + ch[currentItem] + "½×¶Î";
+					key = "ç¬¬" + ch[currentItem] + "é˜¶æ®µ";
 					List<NoteBookEntity> entitys = MediaCenter.getIns()
 							.getMapsNoteBookEntitys(key);
 					if (entitys == null) {
@@ -547,13 +547,12 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				intent.putExtra(Intent.EXTRA_STREAM,
 						Uri.fromFile(new File(imgName + ".png")));
 			} catch (Exception e) {
-				Toast.makeText(this, "·ÖÏíÍ¼Æ¬´íÎó", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å›¾ç‰‡é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			intent.setType("image/*");
 			intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-			// ·ÖÏí¼ÄÓï
-			intent.putExtra(Intent.EXTRA_TEXT, "Ï²»¶²»");
+			// é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½			intent.putExtra(Intent.EXTRA_TEXT, "å–œé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·");
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(Intent.createChooser(intent, getResources()
 					.getString(R.string.app_name)));
@@ -646,10 +645,10 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 		} else {
 			switch (requestCode) {
 			case Constants.USER_STATUS.PHOTO_PICKED_WITH_DATA:
-				// ÕÕÆ¬µÄÔ­Ê¼×ÊÔ´µØÖ·
+				// é”Ÿæ–¤æ‹·ç‰‡é”Ÿæ–¤æ‹·åŸå§‹é”Ÿæ–¤æ‹·æºé”Ÿæ–¤æ‹·å€
 				Uri originalUri = data.getData();
 				try {
-//					// Ê¹ÓÃContentProviderÍ¨¹ıURI»ñÈ¡Ô­Ê¼Í¼Æ¬
+//					// ä½¿é”Ÿæ–¤æ‹·ContentProvideré€šé”Ÿæ–¤æ‹·URIé”Ÿæ–¤æ‹·å–åŸå§‹å›¾ç‰‡
 					Bitmap smallBitmap = ImageTools.getSmallBitmap(context, originalUri);
 					if(smallBitmap != null){
 						String imgName = String.valueOf(System
@@ -672,7 +671,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				try {
 					Bitmap newBitmap = ImageTools.dealWithCarmeaData();
 
-					// ½«´¦Àí¹ıµÄÍ¼Æ¬ÏÔÊ¾ÔÚ½çÃæÉÏ£¬²¢±£´æµ½±¾µØ
+					// é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å›¾ç‰‡é”Ÿæ–¤æ‹·ç¤ºé”ŸèŠ‚æ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿè¾ƒï½æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”ŸèŠ¥åˆ°é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 					String imgName = String.valueOf(System.currentTimeMillis());
 					ImageTools.savePhotoToSDCard(newBitmap, localNote, imgName);
 					imgUrls.add(localNote + imgName);
@@ -762,7 +761,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				noteThirdLayout.setVisibility(View.VISIBLE);
 				btnSure.setText(R.string.edit);
 			} else {
-				key = "µÚ" + ch[currentItem] + "½×¶Î";
+				key = "é”Ÿæ–¤æ‹·" + ch[currentItem] + "é”Ÿé˜¶è®¹æ‹·";
 				List<NoteBookEntity> entitys = MediaCenter.getIns()
 						.getMapsNoteBookEntitys(key);
 				if (entitys == null) {
@@ -772,7 +771,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				secondLayout.setVisibility(View.GONE);
 				btnWrite.setVisibility(View.VISIBLE);
 				btnSure.setVisibility(View.GONE);
-				tvTitle.setText("¼ÇÊÂ±¾");
+				tvTitle.setText("é”Ÿæ–¤æ‹·é”Ÿé“°æ†‹æ‹·");
 			}
 		} else if (noteThirdLayout.getVisibility() == View.VISIBLE) {
 			noteThirdLayout.setVisibility(View.GONE);
@@ -816,7 +815,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				}
 			}).start();
 		} else {
-			Toast.makeText(context, "µ±Ç°ÍøÂç²»ÊÇwifi", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "é”Ÿæ–¤æ‹·å‰é”Ÿæ–¤æ‹·é”Ÿç•Œä¸é”Ÿæ–¤æ‹·wifi", Toast.LENGTH_LONG).show();
 			noteContentLv.onRefreshComplete();
 		}
 	}

@@ -886,7 +886,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:activeColor
+          @attr name com.example.personalapp:activeColor
         */
         public static final int CircleFlowIndicator_activeColor = 0;
         /**
@@ -903,7 +903,7 @@ containing a value of this type.
 <tr><td><code>stroke</code></td><td>0</td><td></td></tr>
 <tr><td><code>fill</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name android:activeType
+          @attr name com.example.personalapp:activeType
         */
         public static final int CircleFlowIndicator_activeType = 6;
         /**
@@ -917,7 +917,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:centered
+          @attr name com.example.personalapp:centered
         */
         public static final int CircleFlowIndicator_centered = 3;
         /**
@@ -931,7 +931,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:fadeOut
+          @attr name com.example.personalapp:fadeOut
         */
         public static final int CircleFlowIndicator_fadeOut = 4;
         /**
@@ -946,7 +946,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:inactiveColor
+          @attr name com.example.personalapp:inactiveColor
         */
         public static final int CircleFlowIndicator_inactiveColor = 1;
         /**
@@ -963,7 +963,7 @@ containing a value of this type.
 <tr><td><code>stroke</code></td><td>0</td><td></td></tr>
 <tr><td><code>fill</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name android:inactiveType
+          @attr name com.example.personalapp:inactiveType
         */
         public static final int CircleFlowIndicator_inactiveType = 5;
         /**
@@ -979,7 +979,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:radius
+          @attr name com.example.personalapp:radius
         */
         public static final int CircleFlowIndicator_radius = 2;
         /** Attributes that can be used with a PageControlView.
@@ -1011,7 +1011,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-          @attr name android:cell_height
+          @attr name com.example.personalapp:cell_height
         */
         public static final int PageControlView_cell_height = 3;
         /**
@@ -1024,7 +1024,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-          @attr name android:cell_width
+          @attr name com.example.personalapp:cell_width
         */
         public static final int PageControlView_cell_width = 2;
         /**
@@ -1034,7 +1034,7 @@ in (inches), mm (millimeters).
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:focused_src
+          @attr name com.example.personalapp:focused_src
         */
         public static final int PageControlView_focused_src = 0;
         /**
@@ -1044,7 +1044,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:unfocused_src
+          @attr name com.example.personalapp:unfocused_src
         */
         public static final int PageControlView_unfocused_src = 1;
         /** Attributes that can be used with a TitleFlowIndicator.
@@ -1097,7 +1097,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:clipPadding
+          @attr name com.example.personalapp:clipPadding
         */
         public static final int TitleFlowIndicator_clipPadding = 1;
         /**
@@ -1111,7 +1111,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:customTypeface
+          @attr name com.example.personalapp:customTypeface
         */
         public static final int TitleFlowIndicator_customTypeface = 10;
         /**
@@ -1126,7 +1126,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:footerColor
+          @attr name com.example.personalapp:footerColor
         */
         public static final int TitleFlowIndicator_footerColor = 8;
         /**
@@ -1142,7 +1142,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:footerLineHeight
+          @attr name com.example.personalapp:footerLineHeight
         */
         public static final int TitleFlowIndicator_footerLineHeight = 7;
         /**
@@ -1158,7 +1158,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:footerTriangleHeight
+          @attr name com.example.personalapp:footerTriangleHeight
         */
         public static final int TitleFlowIndicator_footerTriangleHeight = 9;
         /**
@@ -1172,7 +1172,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:selectedBold
+          @attr name com.example.personalapp:selectedBold
         */
         public static final int TitleFlowIndicator_selectedBold = 3;
         /**
@@ -1187,7 +1187,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:selectedColor
+          @attr name com.example.personalapp:selectedColor
         */
         public static final int TitleFlowIndicator_selectedColor = 2;
         /**
@@ -1203,7 +1203,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:selectedSize
+          @attr name com.example.personalapp:selectedSize
         */
         public static final int TitleFlowIndicator_selectedSize = 4;
         /**
@@ -1218,7 +1218,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:textColor
+          @attr name com.example.personalapp:textColor
         */
         public static final int TitleFlowIndicator_textColor = 5;
         /**
@@ -1234,7 +1234,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:textSize
+          @attr name com.example.personalapp:textSize
         */
         public static final int TitleFlowIndicator_textSize = 6;
         /**
@@ -1250,7 +1250,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:titlePadding
+          @attr name com.example.personalapp:titlePadding
         */
         public static final int TitleFlowIndicator_titlePadding = 0;
         /** Attributes that can be used with a ViewFlow.
@@ -1277,7 +1277,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:sidebuffer
+          @attr name com.example.personalapp:sidebuffer
         */
         public static final int ViewFlow_sidebuffer = 0;
     };
