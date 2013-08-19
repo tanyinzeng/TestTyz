@@ -82,7 +82,6 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 	private NoteBookEntity noteBookEntity;
 	private List<String> imgUrls;
 	private Context context;
-
 	private LinearLayout progressLayout;
 
 	@Override
