@@ -557,6 +557,7 @@ public class TestActivity extends Activity implements OnTouchListener,
 					+ Constants.FTP_STATUS.PERSON_TXT_NAME;
 			SharedPreferencemanager.pushUserInfoToFile(userInfo,
 					TestActivity.this, filePath);
+			tvTitle.setText(R.string.app_name);
 			new Thread(new Runnable() {
 				@Override
 				public void run() {

@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -234,6 +235,21 @@ public final class ImageTools {
 	 * @return
 	 */
 	public static Bitmap zoomBitmap(Bitmap bitmap, int width, int height) {
+		// originBitmap.compress(CompressFormat.JPEG, 100,
+		// byteArrayOutputStream);
+		// ByteArrayOutputStream outPutStream = new ByteArrayOutputStream();
+		// bitmap.compress(CompressFormat.JPEG, 100, outPutStream);
+		//
+		// int options = 100;
+		// while (outPutStream.toByteArray().length / 1024 > 200) { //
+		// 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+		// outPutStream.reset();
+		// bitmap.compress(
+		// Bitmap.CompressFormat.JPEG, options,
+		// outPutStream);// 这里压缩options%，把压缩后的数据存放到baos中
+		// options -= 10;
+		// }
+		//
 		int w = bitmap.getWidth();
 		int h = bitmap.getHeight();
 		Matrix matrix = new Matrix();
@@ -411,6 +427,70 @@ public final class ImageTools {
 		}
 	}
 
+	public static int calculateInSampleSize(BitmapFactory.Options options,
+			int reqWidth, int reqHeight) {
+		final int height = options.outHeight;
+		final int width = options.outWidth;
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			final int heightRatio = Math.round((float) height
+					/ (float) reqHeight);
+			final int widthRatio = Math.round((float) width / (float) reqWidth);
+			inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+		}
+		return inSampleSize;
+	}
+
+	public static Bitmap getSmallBitmap(String filePath) {
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(filePath, options);
+
+		// Calculate inSampleSize
+		options.inSampleSize = calculateInSampleSize(options, 480, 800);
+
+		// Decode bitmap with inSampleSize set
+		options.inJustDecodeBounds = false;
+
+		return BitmapFactory.decodeFile(filePath, options);
+	}
+
+	public static Bitmap getSmallBitmap(Context context, Uri uri) {
+		try {
+			final BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inJustDecodeBounds = true;
+			BitmapFactory.decodeStream(context.getContentResolver()
+					.openInputStream(uri), null, options);
+
+			// Calculate inSampleSize
+			options.inSampleSize = calculateInSampleSize(options, 720, 1280);
+
+			// Decode bitmap with inSampleSize set
+			options.inJustDecodeBounds = false;
+			Bitmap bm = BitmapFactory.decodeStream(context.getContentResolver()
+					.openInputStream(uri), null, options);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			bm.compress(CompressFormat.JPEG, 100, baos);
+			int optns = 100;
+			while (baos.toByteArray().length / 1024 > 200) { 
+				optns -= 10;// 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+				baos.reset();
+				bm.compress(Bitmap.CompressFormat.JPEG, optns, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+			}
+			byte[] b = baos.toByteArray();
+			if (b.length != 0) {
+				return BitmapFactory.decodeByteArray(b, 0, b.length);
+			} else {
+				return null;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static Bitmap dealWithCarmeaData() {
 		Bitmap bitmap = BitmapFactory.decodeFile(Environment
 				.getExternalStorageDirectory() + "/image.jpg");
@@ -423,7 +503,7 @@ public final class ImageTools {
 	}
 
 	public static Bitmap dealWithPhotoPicked(Context context, Uri uri) {
-		Bitmap smallBitmap = null;
+		Bitmap photo = null;
 		try {
 			BitmapFactory.Options options = new BitmapFactory.Options();
 			options.inSampleSize = 2;
@@ -431,22 +511,28 @@ public final class ImageTools {
 			options.inInputShareable = true;
 			options.inPurgeable = true;
 			options.inPreferredConfig = Bitmap.Config.RGB_565;
-			Bitmap photo = BitmapFactory.decodeStream(context
-					.getContentResolver().openInputStream(uri), null, options);
+			photo = BitmapFactory.decodeStream(context.getContentResolver()
+					.openInputStream(uri), null, options);
 			if (photo != null) {
 				// 为防止原始图片过大导致内存溢出，这里先缩小原图显示，然后释放原始Bitmap占用的内存
-				smallBitmap = zoomBitmap(photo,
-						photo.getWidth() / Constants.USER_STATUS.SCALE,
-						photo.getHeight() / Constants.USER_STATUS.SCALE);
+				ByteArrayOutputStream outPutStream = new ByteArrayOutputStream();
+				photo.compress(CompressFormat.JPEG, 100, outPutStream);
+
+				int opts = 100;
+				while (outPutStream.toByteArray().length / 1024 > 200) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+					outPutStream.reset();
+					photo.compress(Bitmap.CompressFormat.JPEG, opts,
+							outPutStream);// 这里压缩options%，把压缩后的数据存放到baos中
+					opts -= 10;
+				}
 				// 释放原始图片占用的内存，防止out of memory异常发生
-				photo.recycle();
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return smallBitmap;
+		return photo;
 	}
-	
+
 	public static Bitmap decodeUriAsBitmap(String imgUrl) {
 		Bitmap bitmap = null;
 		try {
@@ -458,7 +544,7 @@ public final class ImageTools {
 		}
 		return bitmap;
 	}
-	
+
 	public static void ShowPickDialog(final Activity context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("图片来源");
@@ -497,6 +583,5 @@ public final class ImageTools {
 				});
 		builder.create().show();
 	}
-
 
 }

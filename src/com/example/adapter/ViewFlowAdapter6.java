@@ -74,8 +74,7 @@ public class ViewFlowAdapter6 extends BaseAdapter {
 				}
 				Bitmap bmp = asynLoader.loadBitmap(holder.iv,
 						Constants.GET_QUEST_URI.GET_PICTURE_URI
-								+ SharedPreferencemanager.getPhone(mContext)
-								+ imgUrl, new ImageCallBack() {
+								+ imgUrl+".png", new ImageCallBack() {
 							@Override
 							public void imageLoad(ImageView imageView,
 									Bitmap bitmap) {

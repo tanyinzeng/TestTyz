@@ -200,7 +200,7 @@ public class PersonMyPicActivity extends BaseActivity implements
 							if (!file.exists()) {
 								file.mkdirs();
 							}
-							xmlParse();
+							xmlParseOnline();
 						} else {
 							runOnUiThread(new Runnable() {
 								public void run() {
@@ -245,6 +245,30 @@ public class PersonMyPicActivity extends BaseActivity implements
 				for (int i = 0; i < entitys.size(); i++) {
 					MediaCenter.getIns().addPicEntity(entitys.get(i));
 				}
+				picAdapter = new CopyOfMyPicAdapter(PersonMyPicActivity.this,
+						MediaCenter.getIns().getPicEntitys(),
+						Constants.FTP_STATUS.WORKSPACE_MYPIC_INFO);
+				gridView.setAdapter(picAdapter);
+				progressLayout.setVisibility(View.GONE);
+			}
+		});
+	}
+
+	private void xmlParseOnline() {
+		MediaCenter.getIns().clearPicEntity();
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				List<MyPicEntity> entitys = SharedPreferencemanager
+						.pullMyPicFromFile(PersonMyPicActivity.this,
+								localPicPath);
+				for (int i = 0; i < entitys.size(); i++) {
+					MyPicEntity entity = entitys.get(i);
+					entity.setOnline(true);
+					MediaCenter.getIns().addPicEntity(entity);
+				}
+				SharedPreferencemanager.pushMyPicToFile(MediaCenter.getIns()
+						.getPicEntitys(), PersonMyPicActivity.this, localPicPath);
 				picAdapter = new CopyOfMyPicAdapter(PersonMyPicActivity.this,
 						MediaCenter.getIns().getPicEntitys(),
 						Constants.FTP_STATUS.WORKSPACE_MYPIC_INFO);

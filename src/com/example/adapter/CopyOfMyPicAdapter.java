@@ -142,7 +142,6 @@ public class CopyOfMyPicAdapter extends BaseAdapter {
 			}
 			Bitmap bmp = asynLoader.loadBitmap(vh.iv,
 					Constants.GET_QUEST_URI.GET_PICTURE_URI
-							+ SharedPreferencemanager.getPhone(context)
 							+ entity.getImgUrls().get(0) + ".png", new ImageCallBack() {
 						@Override
 						public void imageLoad(ImageView imageView, Bitmap bitmap) {

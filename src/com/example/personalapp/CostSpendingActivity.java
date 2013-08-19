@@ -414,6 +414,7 @@ public class CostSpendingActivity extends Activity implements OnClickListener,
 			btnWrite.setVisibility(View.VISIBLE);
 			hideInputMethod();
 			tvTitle.setText("事情安排");
+			isPro = false;
 		} else {
 			finish();
 		}
@@ -448,11 +449,17 @@ public class CostSpendingActivity extends Activity implements OnClickListener,
 					Calendar.DAY_OF_MONTH)).show();
 			break;
 		case R.id.pro_select_category_et:
-			items = new String[proGroup.size()+1];
-			items[0] = "不限";
-			for(int i = 0;i<proGroup.size();i++){
-				items[i+1] = proGroup.get(i).getProName();
+			if(isPro){
+				items = new String[1];
+				items[0] = proEntity.getProType();
+			}else{
+				items = new String[proGroup.size()+1];
+				items[0] = "不限";
+				for(int i = 0;i<proGroup.size();i++){
+					items[i+1] = proGroup.get(i).getProName();
+				}
 			}
+			
 			new AlertDialog.Builder(this).setTitle("列表框")
 					.setItems(items, new DialogInterface.OnClickListener() {
 
@@ -713,6 +720,7 @@ public class CostSpendingActivity extends Activity implements OnClickListener,
 				btnSure.setVisibility(View.GONE);
 				proSecondLayout.setVisibility(View.GONE);
 				tvTitle.setText("事情安排");
+				isPro = false;
 			}
 			hideInputMethod();
 			break;

@@ -650,7 +650,7 @@ public class NoteBookActivity extends BaseActivity implements OnClickListener,
 				Uri originalUri = data.getData();
 				try {
 //					// 使用ContentProvider通过URI获取原始图片
-					Bitmap smallBitmap = ImageTools.dealWithPhotoPicked(context, originalUri);
+					Bitmap smallBitmap = ImageTools.getSmallBitmap(context, originalUri);
 					if(smallBitmap != null){
 						String imgName = String.valueOf(System
 								.currentTimeMillis());
