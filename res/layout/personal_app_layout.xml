@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xyz="http://schemas.android.com/apk/res/com.example.personalapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background" >
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/head_title_height"
+            android:background="@drawable/head_title" >
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:background="@drawable/back_btn" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/personal_app_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/LargestTextSize" />
+
+            <Button
+                android:id="@+id/sure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_left"
+                android:background="@drawable/sure_btn"
+                android:text="@string/category"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/seperate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            android:src="@drawable/seperate" />
+
+        <RelativeLayout
+            android:id="@+id/listview_width"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/seperate"
+            android:background="@drawable/xinxi_01" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+
+                <com.example.view.XListViewFoot
+                    android:id="@+id/person_app_listview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#00000000" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/second_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/seperate"
+            android:background="@drawable/xinxi_01"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+
+                <FrameLayout
+                    android:id="@+id/about_img_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="300px"
+                    android:layout_marginLeft="@dimen/person_img_margin_top"
+                    android:layout_marginRight="@dimen/person_img_margin_top"
+                    android:layout_marginTop="@dimen/person_img_margin_top"
+                    android:background="@drawable/more_03" >
+
+                    <org.taptwo.android.widget.ViewFlow
+                        android:id="@+id/viewflow"
+                        android:layout_width="fill_parent"
+                        android:layout_height="300px"
+                        xyz:sidebuffer="3" >
+                    </org.taptwo.android.widget.ViewFlow>
+
+                    <org.taptwo.android.widget.CircleFlowIndicator
+                        android:id="@+id/viewflowindic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="10dip"
+                        android:padding="10dip"
+                        xyz:fadeOut="1000"
+                        xyz:inactiveType="stroke" />
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/about_img_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_img_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <TextView
+                    android:id="@+id/about_app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_img_seperate"
+                    android:layout_marginLeft="@dimen/person_img_margin_top"
+                    android:layout_marginRight="@dimen/person_img_margin_top"
+                    android:layout_marginTop="@dimen/person_img_margin_top"
+                    android:text="个人app"
+                    android:textSize="@dimen/LargerTextSize" />
+
+                <ImageView
+                    android:id="@+id/about_app_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_app_title"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+                <TextView
+                    android:id="@+id/about_app_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_app_seperate"
+                    android:layout_marginLeft="@dimen/person_img_margin_top"
+                    android:layout_marginRight="@dimen/person_img_margin_top"
+                    android:layout_marginTop="@dimen/person_img_margin_top"
+                    android:text="个人app"
+                    android:textSize="@dimen/LargerTextSize" />
+
+                <ImageView
+                    android:id="@+id/about_content_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_app_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+                <TextView 
+                    android:id="@+id/from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="来源：无"
+                    android:textSize="@dimen/LargerTextSize"
+                    android:layout_marginLeft="@dimen/person_img_margin_top"
+                    android:layout_marginRight="@dimen/person_img_margin_top"
+                    android:layout_marginTop="@dimen/person_img_margin_top"
+                    android:layout_below="@id/about_content_seperate"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

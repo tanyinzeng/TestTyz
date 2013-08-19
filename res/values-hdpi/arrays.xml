@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+    <string-array name="picture_group">
+        <item>拍\t照</item>
+        <item>从\t手\t机\t中\t选\t择</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xyz="http://schemas.android.com/apk/res/com.example.personalapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/top_title"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/head_title_height"
+            android:background="@drawable/head_title" >
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:background="@drawable/back_btn" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="个人图片"
+                android:textColor="@color/white"
+                android:textSize="@dimen/LargestTextSize" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/photo_seperate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_title"
+            android:scaleType="fitXY"
+            android:src="@drawable/seperate" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/photo_seperate"
+            android:background="@drawable/xinxi_01" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+                 <com.example.view.LazyScrollView
+                android:id="@+id/waterfall_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+               >
+
+                <LinearLayout
+                    android:id="@+id/waterfall_container"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+                </LinearLayout>
+            </com.example.view.LazyScrollView>
+                
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/notebook_fourlayout"
+        android:layout_width="fill_parent"
+        android:visibility="gone"
+        android:layout_height="fill_parent" >
+
+        <org.taptwo.android.widget.ViewFlow
+            android:id="@+id/viewflow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xyz:sidebuffer="3" >
+        </org.taptwo.android.widget.ViewFlow>
+
+        <org.taptwo.android.widget.CircleFlowIndicator
+            android:id="@+id/viewflowindic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:padding="10dip"
+            xyz:fadeOut="1000"
+            xyz:inactiveType="stroke" />
+    </FrameLayout>
+
+</RelativeLayout>

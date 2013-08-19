@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xyz="http://schemas.android.com/apk/res/com.example.personalapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/head_title_height"
+        android:background="@drawable/head_title" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:background="@drawable/back_btn" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/check_feeling_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargestTextSize" />
+
+        <Button
+            android:id="@+id/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/note_add"
+            android:paddingLeft="@dimen/person_head_edit_margin_top" />
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/sure_btn"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/score_feeling_tab"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/score_layout"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/score_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/score_feeling_btn"
+                    android:focusable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="考核成绩"
+                    android:textSize="@dimen/LargerTextSize" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/feeling_layout"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/feeling_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/score_feeling_btn"
+                    android:focusable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="心情记录"
+                    android:textSize="@dimen/LargerTextSize" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/score_content_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/score_feeling_tab" >
+
+            <ImageView
+                android:id="@+id/score_seperate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/seperate" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/score_seperate"
+                android:background="@drawable/xinxi_01" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/xinxi_10" >
+
+                    <com.example.view.SLCustomListView
+                        android:id="@+id/score_listview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:cacheColorHint="#00000000"
+                        android:divider="@android:color/white"
+                        android:listSelector="@android:color/transparent" >
+                    </com.example.view.SLCustomListView>
+
+                    <com.example.view.SLCustomListView
+                        android:id="@+id/feeling_listview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:cacheColorHint="#00000000"
+                        android:divider="@android:color/white"
+                        android:listSelector="@android:color/transparent"
+                        android:visibility="gone" >
+                    </com.example.view.SLCustomListView>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chengji_second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/feel_seperate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/seperate" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/feel_seperate"
+            android:background="@drawable/xinxi_01" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+
+                <RelativeLayout
+                    android:id="@+id/item_title_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                    <TextView
+                        android:id="@+id/score_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="姓名："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/score_title_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/score_title"
+                        android:background="@drawable/cost_spending_et_01"
+                        android:maxLength="5"
+                        android:padding="@dimen/person_head_edit_margin_top" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_title_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <RelativeLayout
+                    android:id="@+id/submit_photo_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_money"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/score_score_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="成绩："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/score_score_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/score_score_title"
+                        android:background="@drawable/cost_spending_et_01"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:padding="@dimen/person_head_edit_margin_top" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_score"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/submit_photo_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <RelativeLayout
+                    android:id="@+id/score_time_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_score"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/score_score_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="时间："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/score_scoretime_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/score_score_time"
+                        android:background="@drawable/cost_spending_et_01"
+                        android:padding="@dimen/person_head_edit_margin_top" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@id/feel_seperate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/seperate" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/feel_seperate"
+            android:background="@drawable/xinxi_01" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+
+                <RelativeLayout
+                    android:id="@id/item_title_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                    <TextView
+                        android:id="@+id/item_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/notebook_add_item_title"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/item_title_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/item_title"
+                        android:background="@drawable/cost_spending_et_01"
+                        android:maxLength="20"
+                        android:padding="@dimen/person_head_edit_margin_top" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@id/seperate_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_title_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <RelativeLayout
+                    android:id="@id/feeling_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_money"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/feeling_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/notebook_add_item_feeling"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <ImageButton
+                        android:id="@+id/first_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                        android:layout_toRightOf="@id/feeling_title"
+                        android:background="@drawable/feeling_star" />
+
+                    <ImageButton
+                        android:id="@+id/second_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                        android:layout_toRightOf="@id/first_star"
+                        android:background="@drawable/feeling_star" />
+
+                    <ImageButton
+                        android:id="@+id/third_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                        android:layout_toRightOf="@id/second_star"
+                        android:background="@drawable/feeling_star" />
+
+                    <ImageButton
+                        android:id="@+id/four_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                        android:layout_toRightOf="@id/third_star"
+                        android:background="@drawable/feeling_star" />
+
+                    <ImageButton
+                        android:id="@+id/five_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                        android:layout_toRightOf="@id/four_star"
+                        android:background="@drawable/feeling_star" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_time"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/feeling_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <RelativeLayout
+                    android:id="@id/submit_photo_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_time"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/submit_photo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/notebook_add_item_submit_pic"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <Button
+                        android:id="@+id/submit_photo_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/submit_photo_title"
+                        android:background="@drawable/upload_photo" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_submit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/submit_photo_layout"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05" />
+
+                <GridView
+                    android:id="@+id/notebook_gridView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_submit"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:horizontalSpacing="4dip"
+                    android:numColumns="4"
+                    android:verticalSpacing="4dip" >
+                </GridView>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/location_info_bg"
+        android:gravity="center"
+        android:padding="10dp" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="false"
+            android:text="正在加载数据，请稍候"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargerTextSize" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/note_thirdLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:background="@drawable/xinxi_01"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/xinxi_10" >
+
+            <RelativeLayout
+                android:id="@+id/content_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/person_detail_personal_margin_top"
+                android:layout_marginLeft="@dimen/person_detail_personal_margin_top"
+                android:layout_marginRight="@dimen/person_detail_personal_margin_top"
+                android:layout_marginTop="@dimen/margin_top" >
+
+                <ImageView
+                    android:id="@+id/note_detail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY" />
+
+                <RelativeLayout
+                    android:id="@+id/img_background_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_right"
+                    android:layout_marginBottom="@dimen/person_detail_personal_margin_top"
+                    android:background="@drawable/note_third_background" >
+
+                    <TextView
+                        android:id="@+id/note_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/LargeTextSize" />
+                    <TextView
+                        android:id="@+id/note_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/note_desc"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/LargeTextSize" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/note_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/img_background_layout"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/share" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/notebook_fourlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" >
+
+        <org.taptwo.android.widget.ViewFlow
+            android:id="@+id/viewflow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xyz:sidebuffer="3" >
+        </org.taptwo.android.widget.ViewFlow>
+
+        <org.taptwo.android.widget.CircleFlowIndicator
+            android:id="@+id/viewflowindic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:padding="10dip"
+            xyz:fadeOut="1000"
+            xyz:inactiveType="stroke" />
+    </FrameLayout>
+
+</RelativeLayout>

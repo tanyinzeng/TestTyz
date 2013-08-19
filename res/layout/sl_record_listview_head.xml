@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:Android="http://schemas.android.com/apk/res/android"  
+    Android:id="@+id/custom_listview"
+    Android:layout_width="fill_parent"  
+    Android:layout_height="wrap_content"  
+    Android:orientation="horizontal"     
+    Android:gravity="center_vertical"
+    Android:baselineAligned="false"
+    >     
+  <LinearLayout 
+      Android:id="@+id/custom_listview_status"
+       Android:layout_width="0dip"  
+       Android:layout_marginTop="10.0dip"
+    Android:layout_marginBottom="10.0dip"
+            Android:layout_height="32.0dip" 
+            Android:layout_weight="1.0" 
+    Android:gravity="center_vertical|right" >
+        <FrameLayout  
+            Android:layout_width="wrap_content"
+	            Android:layout_height="wrap_content"
+    					Android:layout_gravity="center_vertical|right"    					
+             >  
+  
+            <ImageView  
+                Android:id="@+id/head_arrowImageView"  
+                Android:layout_width="32.0dip"
+	            Android:layout_height="32.0dip"		                        
+                Android:layout_gravity="center"  
+                Android:src="@drawable/sl_download" />  
+  
+            <ProgressBar  
+                Android:id="@+id/head_progressBar"  
+                Android:layout_width="wrap_content"  
+                Android:layout_height="wrap_content"  
+                	style="?android:attr/progressBarStyle"
+	            Android:indeterminateDrawable="@drawable/sl_progress_bar" 
+                Android:layout_gravity="center"  
+               Android:visibility="gone"/> 
+                
+        </FrameLayout>  
+    </LinearLayout>
+        <LinearLayout  
+             Android:id="@+id/custom_listview_tip"
+    Android:layout_width="0dip"  
+    Android:layout_height="wrap_content"  
+    Android:orientation="horizontal"
+    Android:layout_weight="2.0"
+    Android:gravity="left" 
+    Android:paddingLeft="5.0dip">     
+            <TextView  
+                Android:id="@+id/head_tipsTextView"  
+                Android:layout_width="wrap_content"  
+                Android:layout_height="wrap_content"  
+                Android:text="@string/tip_pull_to_refresh"  
+                Android:textColor="#000000" 
+                Android:textSize="18sp" />                
+        </LinearLayout>   
+</LinearLayout>  

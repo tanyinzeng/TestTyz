@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xyz="http://schemas.android.com/apk/res/com.example.personalapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/head_title_height"
+        android:background="@drawable/head_title" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:background="@drawable/back_btn" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/notebook_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargestTextSize" />
+
+        <Button
+            android:id="@+id/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/note_add"
+            android:paddingLeft="@dimen/person_head_edit_margin_top" />
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/sure_btn"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:id="@+id/tabbar_layout"
+            android:layout_width="102dip"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/margin_top" >
+
+            <ListView
+                android:id="@+id/tabBar_listview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#000000"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="@dimen/person_head_edit_margin_top" >
+            </ListView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tabbar_layout" >
+
+            <ImageView
+                android:id="@+id/seperate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/seperate" />
+
+            <RelativeLayout
+                android:id="@+id/content_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seperate" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/xinxi_01" >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/xinxi_10" >
+
+                        <com.example.view.SLCustomListView
+                            android:id="@+id/notebook_listview"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:cacheColorHint="#000000"
+                            android:divider="@android:color/white" >
+                        </com.example.view.SLCustomListView>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:background="@drawable/xinxi_01"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/xinxi_10" >
+
+            <RelativeLayout
+                android:id="@+id/item_title_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                <TextView
+                    android:id="@+id/item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/notebook_add_item_title"
+                    android:textSize="@dimen/LargeTextSize" />
+
+                <EditText
+                    android:id="@+id/item_title_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/item_title"
+                    android:background="@drawable/cost_spending_et_01"
+                    android:padding="@dimen/person_head_edit_margin_top" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/seperate_money"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_title_layout"
+                android:layout_marginTop="@dimen/margin_top"
+                android:scaleType="fitXY"
+                android:src="@drawable/xinxi_05" />
+
+            <RelativeLayout
+                android:id="@+id/feeling_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seperate_money"
+                android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginTop="@dimen/margin_top" >
+
+                <TextView
+                    android:id="@+id/feeling_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/notebook_add_item_feeling"
+                    android:textSize="@dimen/LargeTextSize" />
+
+                <ImageButton
+                    android:id="@+id/first_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/feeling_title"
+                    android:background="@drawable/feeling_star" />
+
+                <ImageButton
+                    android:id="@+id/second_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/first_star"
+                    android:background="@drawable/feeling_star" />
+
+                <ImageButton
+                    android:id="@+id/third_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/second_star"
+                    android:background="@drawable/feeling_star" />
+
+                <ImageButton
+                    android:id="@+id/four_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/third_star"
+                    android:background="@drawable/feeling_star" />
+
+                <ImageButton
+                    android:id="@+id/five_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/four_star"
+                    android:background="@drawable/feeling_star" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/seperate_time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/feeling_layout"
+                android:layout_marginTop="@dimen/margin_top"
+                android:scaleType="fitXY"
+                android:src="@drawable/xinxi_05" />
+
+            <RelativeLayout
+                android:id="@+id/content_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seperate_time"
+                android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginTop="@dimen/margin_top" >
+
+                <TextView
+                    android:id="@+id/item_content_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/notebook_add_item_content"
+                    android:textSize="@dimen/LargeTextSize" />
+
+                <EditText
+                    android:id="@+id/item_content_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/item_content_title"
+                    android:background="@drawable/cost_spending_et_01"
+                    android:padding="@dimen/person_head_edit_margin_top" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/seperate_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/content_layout"
+                android:layout_marginTop="@dimen/margin_top"
+                android:scaleType="fitXY"
+                android:src="@drawable/xinxi_05" />
+
+            <RelativeLayout
+                android:id="@+id/submit_photo_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seperate_content"
+                android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginTop="@dimen/margin_top" >
+
+                <TextView
+                    android:id="@+id/submit_photo_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/notebook_add_item_submit_pic"
+                    android:textSize="@dimen/LargeTextSize" />
+
+                <Button
+                    android:id="@+id/submit_photo_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/submit_photo_title"
+                    android:background="@drawable/upload_photo" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/seperate_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/submit_photo_layout"
+                android:layout_marginTop="@dimen/margin_top"
+                android:scaleType="fitXY"
+                android:src="@drawable/xinxi_05" />
+
+            <GridView
+                android:id="@+id/notebook_gridView"
+                android:layout_width="fill_parent"
+                android:layout_height="800px"
+                android:layout_below="@id/seperate_submit"
+                android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:horizontalSpacing="4dip"
+                android:numColumns="4"
+                android:verticalSpacing="4dip" >
+            </GridView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/third_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/seperate_third"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/seperate" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/seperate_third"
+            android:background="@drawable/xinxi_01" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/xinxi_10" >
+
+                <ListView
+                    android:id="@+id/project_schedle_listview_setting"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#000000"
+                    android:listSelector="@android:color/transparent" >
+                </ListView>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/note_thirdLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:background="@drawable/xinxi_01"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/xinxi_10" >
+
+            <RelativeLayout
+                android:id="@+id/content_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/person_detail_personal_margin_top"
+                android:layout_marginLeft="@dimen/person_detail_personal_margin_top"
+                android:layout_marginRight="@dimen/person_detail_personal_margin_top"
+                android:layout_marginTop="@dimen/margin_top" >
+
+                <ImageView
+                    android:id="@+id/note_detail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY" />
+
+                <RelativeLayout
+                    android:id="@+id/img_background_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/person_detail_personal_margin_top"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_right"
+                    android:background="@drawable/note_third_background" >
+
+                    <TextView
+                        android:id="@+id/note_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/note_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/note_title"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/note_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/note_time"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/LargeTextSize" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/note_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/img_background_layout"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/share" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/notebook_fourlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" >
+
+        <org.taptwo.android.widget.ViewFlow
+            android:id="@+id/viewflow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xyz:sidebuffer="3" >
+        </org.taptwo.android.widget.ViewFlow>
+
+        <org.taptwo.android.widget.CircleFlowIndicator
+            android:id="@+id/viewflowindic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:padding="10dip"
+            xyz:fadeOut="1000"
+            xyz:inactiveType="stroke" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:background="@drawable/location_info_bg"
+        android:gravity="center"
+        android:padding="10dp" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="false"
+            android:text="正在加载数据，请稍候"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargerTextSize" />
+    </LinearLayout>
+
+</RelativeLayout>

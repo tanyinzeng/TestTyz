@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@id/linn_second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/person_app"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/person_detail_photo_margin_top"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/app_schedle_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/app_schedle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/app_schedle_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/personal_app_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/person_more"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/more_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/more" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/more_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/more_title" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

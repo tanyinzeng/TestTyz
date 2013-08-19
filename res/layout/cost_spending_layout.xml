@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/head_title_height"
+        android:background="@drawable/head_title" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:background="@drawable/back_btn" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/cost_spending_total_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargestTextSize" />
+
+        <Button
+            android:id="@+id/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/note_add"
+            android:paddingLeft="@dimen/person_head_edit_margin_top" />
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left"
+            android:background="@drawable/sure_btn"
+            android:textColor="@color/white"
+            android:text="@string/sure"
+            android:visibility="gone"
+             />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/seperate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:scaleType="fitXY"
+        android:src="@drawable/seperate" />
+
+    <RelativeLayout
+        android:id="@+id/listview_width"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/seperate"
+        android:background="@drawable/xinxi_01" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/xinxi_10" >
+
+            <RelativeLayout
+                android:id="@+id/first_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:visibility="visible"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/cost_total_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin_left"
+                    android:paddingBottom="@dimen/margin_left"
+                    android:visibility="visible"
+                    android:background="@drawable/cost_01" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_left"
+                        android:text="@string/cost_spending_total_tv_title"
+                        android:textSize="@dimen/SmallTextSize" />
+
+                    <TextView
+                        android:id="@+id/cost_spending_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/margin_left"
+                        android:textSize="@dimen/SmallTextSize" />
+                </RelativeLayout>
+				<com.example.view.SLCustomListView
+                    android:id="@+id/my_pic_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/record_listview_height"
+                    android:layout_below="@id/cost_total_layout"
+                    android:cacheColorHint="#000000" >
+                </com.example.view.SLCustomListView>
+                <ExpandableListView
+                    android:id="@+id/expandableListView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@id/my_pic_list"
+                    android:groupIndicator="@null" >
+                </ExpandableListView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/second_layout"
+                android:layout_width="fill_parent"
+                android:visibility="gone"
+                android:layout_height="fill_parent" >
+                
+                <RelativeLayout
+                    android:id="@+id/title_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                    <TextView
+                        android:id="@+id/cost_title_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="标题："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/cost_title_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:singleLine="true"
+                        android:maxLength="15"
+                        android:layout_toRightOf="@id/cost_title_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+
+                <RelativeLayout
+                    android:id="@+id/money_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_title"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                    <TextView
+                        android:id="@+id/cost_money_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="金额："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/cost_money_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:maxLength="9"
+                        android:layout_toRightOf="@id/cost_money_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/seperate_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/money_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                <RelativeLayout
+                    android:id="@+id/time_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_money"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/cost_time_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="时间："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/cost_time_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:singleLine="true"
+                        android:textSize="@dimen/LargeTextSize"
+                        android:layout_toRightOf="@id/cost_time_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/seperate_time"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                <RelativeLayout
+                    android:id="@+id/memo_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seperate_time"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/cost_memo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="备注："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/cost_memo_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:layout_toRightOf="@id/cost_memo_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+                
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/project_second_layout"
+                android:layout_width="fill_parent"
+                android:visibility="gone"
+                android:layout_height="fill_parent" >
+
+                <RelativeLayout
+                    android:id="@+id/pro_start_time_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/person_cost_spending_second_margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_start_time_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="开始时间："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/pro_start_time_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/LargeTextSize"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:layout_toRightOf="@id/pro_start_time_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/pro_start_time_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_start_time_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                <RelativeLayout
+                    android:id="@+id/pro_end_time_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_start_time_money"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_end_time_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="结束时间："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/pro_end_time_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:singleLine="true"
+                        android:textSize="@dimen/LargeTextSize"
+                        android:layout_toRightOf="@id/pro_end_time_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/pro_end_time_time_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_end_time_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                
+                <RelativeLayout
+                    android:id="@+id/pro_select_category_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_end_time_time_seperate"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_select_category_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="事情类型："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <TextView
+                        android:id="@+id/pro_select_category_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_detail_photo_margin_left"
+                        android:hint="请选择事件类型"
+                        android:textSize="@dimen/LargeTextSize"
+                        android:layout_toRightOf="@id/pro_select_category_title"
+                        android:background="@drawable/project_select_et" />
+                </RelativeLayout>
+                
+                <ImageView
+                    android:id="@+id/pro_select_category_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_select_category_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                
+                <RelativeLayout
+                    android:id="@+id/pro_name_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_select_category_seperate"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="事情名称："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/pro_name_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:hint="输入事情名称"
+                        android:layout_toRightOf="@id/pro_name_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+                
+                <ImageView
+                    android:id="@+id/pro_name_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_name_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                
+                <RelativeLayout
+                    android:id="@+id/pro_person_name_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_name_seperate"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_person_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="重要人物："
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/pro_person_name_et"
+                       android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:hint="输入重要的人物"
+                        android:layout_toRightOf="@id/pro_person_name_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout>
+                
+                <ImageView
+                    android:id="@+id/pro_person_name_seperate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_person_name_layout"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinxi_05"
+                    android:layout_marginTop="@dimen/margin_top" />
+                
+                 <RelativeLayout
+                    android:id="@+id/pro_memo_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pro_person_name_seperate"
+                    android:layout_marginLeft="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginRight="@dimen/person_cost_spending_second_margin_left"
+                    android:layout_marginTop="@dimen/margin_top" >
+
+                    <TextView
+                        android:id="@+id/pro_memo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/memo"
+                        android:textSize="@dimen/LargeTextSize" />
+
+                    <EditText
+                        android:id="@+id/pro_memo_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/person_head_edit_margin_top"
+                        android:layout_toRightOf="@id/pro_memo_title"
+                        android:background="@drawable/cost_spending_et_01" />
+                </RelativeLayout> 
+                
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="@drawable/location_info_bg" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="正在加载数据，请稍候"
+            android:singleLine="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargerTextSize" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/img_layout"
+        android:layout_width="@dimen/note_adapter_img_width_back"
+        android:layout_height="@dimen/note_adapter_img_height_back"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@drawable/video_bg" >
+
+        <ImageView
+            android:id="@+id/note_img_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginTop="@dimen/person_img_margin_top"
+        android:layout_toRightOf="@id/img_layout" >
+
+        <TextView
+            android:id="@+id/notebook_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:textSize="@dimen/LargerTextSize" />
+
+        <TextView
+            android:id="@+id/notebook_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notebook_item_title"
+            android:text="@string/app_name"
+            android:textSize="@dimen/SmallTextSize" />
+
+        <TextView
+            android:id="@+id/notebook_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notebook_item_time"
+            android:layout_marginTop="@dimen/person_detail_photo_margin_left"
+            android:ellipsize="end"
+            android:lines="2"
+            android:scrollHorizontally="true"
+            android:textSize="@dimen/LargeTextSize" />
+    </RelativeLayout>
+
+</RelativeLayout>

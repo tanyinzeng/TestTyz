@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- textSize -->
+    <dimen name="LargestTextSize">22sp</dimen>
+    <dimen name="LargerTextSize">20sp</dimen>
+    <dimen name="LargeTextSize">18sp</dimen>
+    <dimen name="SmallTextSize">16sp</dimen>
+    <dimen name="margin_left">12dip</dimen>
+    <dimen name="margin_right">12dip</dimen>
+    <dimen name="margin_top">8dip</dimen>
+    <dimen name="person_head_edit_margin_top">6dip</dimen>
+    <dimen name="person_detail_photo_margin_left">4dp</dimen>
+    <dimen name="person_detail_photo_margin_top">6dp</dimen>
+    <dimen name="person_detail_personal_margin_top">6dp</dimen>
+    <dimen name="person_img_margin_top">12dip</dimen>
+    <dimen name="person_cost_spending_second_margin_left">20dip</dimen>
+    <dimen name="person_cost_spending_second_margin_top">20dip</dimen>
+    <dimen name="login_tv_margin_left">40dip</dimen>
+    
+    <dimen name="moreAppWidth">102px</dimen>
+    
+    <dimen name="personal_head_width">200px</dimen>
+    <dimen name="note_img_width">300px</dimen>
+    <dimen name="note_img_height">200px</dimen>
+    
+    <dimen name="submit_width">170px</dimen>
+    <dimen name="submit_height">180px</dimen>
+    <dimen name="submit_img_width">150px</dimen>
+    <dimen name="submit_img_height">160px</dimen>
+    
+    <dimen name="record_img_width">380px</dimen>
+	<dimen name="record_img_height">300px</dimen>
+	
+	<dimen name="more_img_width">730px</dimen>
+	<dimen name="more_img_height">380px</dimen>
+	
+	 <dimen name="note_adapter_img_width">280px</dimen>
+	<dimen name="note_adapter_img_height">200px</dimen>
+	<dimen name="note_adapter_img_width_back">300px</dimen>
+	<dimen name="note_adapter_img_height_back">210px</dimen>
+	
+	<dimen name="view_flow_height">1100px</dimen>
+	
+	<dimen name="video_width">400px</dimen>
+	<dimen name="video_height">110px</dimen>
+	
+	<dimen name="sms_height">72px</dimen>
+	
+	<dimen name="sms_head_img_width">100px</dimen>
+	<dimen name="sms_head_img_height">100px</dimen>
+	
+	<dimen name="person_img_head_height">462px</dimen>
+	
+	<dimen name="person_head_width">200px</dimen>
+	<dimen name="person_head_height">180px</dimen>
+	
+	<dimen name="add_pic_width">200px</dimen>
+	<dimen name="add_pic_height">180px</dimen>
+	
+	<dimen name="forward_date_width">190px</dimen>
+	<dimen name="forward_date_height">80px</dimen>
+	
+	<dimen name="head_title_height">110px</dimen>
+	
+	<dimen name="video_bg_width">250px</dimen>
+	<dimen name="video_bg_height">200px</dimen>
+	
+	<dimen name="record_listview_height">100px</dimen>
+	
+	<dimen name="add_width">180.0dip</dimen>
+</resources>

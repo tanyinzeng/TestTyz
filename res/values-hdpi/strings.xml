@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">个人App</string>
+     <string name="login_title">用户登录</string>
+    <string name="phonenum">手机号码</string>
+    <string name="licenese">激活码 </string>
+    
+    <string name="back">返回</string>
+    <string name="personal_photo">生活相片</string>
+    <string name="personal_photo_video">视频</string>
+    <string name="personal_sms">信息</string>
+    <string name="tip_unsaved">未保存</string>
+    <string name="photo_video_title">相片、视频</string>
+    <string name="sms_title">发信息</string>
+    <string name="notebook_title">记事本</string>
+	<string name="project_schedle_title">项目安排</string>
+    <string name="personal_title">个人记录</string>
+	<string name="check_feeling_title">考核、心情</string>
+	<string name="cost_spending_title">费用开支</string>
+	<string name="thing_schedle_title">事情安排</string>
+	<string name="personal_app_title">个人作品</string>
+	<string name="more_title">更多</string>
+	<string name="category">分类</string>
+	<string name="personal_contact">联系人</string>
+	
+	<string name="setting_sign">设置标语：</string>
+	
+	<string name="cost_spending_total_title">费用开支</string>
+	<string name="cost_spending_total_tv_title">￥费用总计：</string>
+	<string name="notebook_first">第一\n阶段</string>	
+	<string name="notebook_add_item_title">内容标题：</string>
+	<string name="notebook_add_item_feeling">心情指数：</string>
+	<string name="notebook_add_item_content">正文内容：</string>
+	<string name="notebook_add_item_submit_pic">提交图片：</string>
+	<string name="project_add_do_date">完成日期：</string>
+	<string name="project_add_title">项目名称：</string>
+	<string name="project_add_forward">提&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;前：</string>
+	<string name="project_add_select_warning">提醒铃声：</string>
+	
+	<string name="sure">确定</string>
+	<string name="send">发送</string>
+	<string name="cancel">取消</string>
+	
+	<string name="memo">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注：</string>
+	
+	 <string name="appname">ftp</string>
+
+    <string name="go_home">Home</string>
+    <string name="options">选项</string>
+    <string name="set_as_home">设置当前目录为主目录</string>
+    <string name="delete">delete</string>
+
+    <string name="service_start_error_title">服务启动失败！</string>
+    <string name="service_start_error_msg">服务启动失败，请重新启动程序。</string>
+    <string name="service_start_error_button">OK</string>
+    
+    <string name="tip_pull_to_refresh">下拉刷新数据</string>
+    <string name="refresh">刷新</string>
+    <string name="tip_loose_to_refresh">松开刷新数据</string>
+    <string name="tip_refreshing">正在刷新数据</string>
+    <string name="tip_refresh_done">刷新完成</string>
+    
+    <string name="edit">编辑</string>
+    
+    <string name="sms_text">我在用个人APP，大家有什么想说的，编辑"（我手机号码）&amp;(内容)"发送到13786465204个人APP软件服务号码</string>
+</resources>

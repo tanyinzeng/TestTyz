@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:descendantFocusability="blocksDescendants" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceMedium"
+         android:textStyle="bold" 
+         android:id="@+id/alpha"         
+         android:paddingLeft="7.0dip" 
+         android:visibility="gone" 
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         />
+    <RelativeLayout android:id="@+id/RelativeLayout2" 
+        android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:padding="5.0dip"
+          android:layout_below="@id/alpha"    
+           android:layout_centerHorizontal="true"
+           >       
+        <TextView android:textSize="@dimen/LargeTextSize" 
+            android:layout_gravity="center_vertical" 
+            android:id="@+id/name" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"             
+            android:singleLine="true" 
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_alignParentLeft="true" 
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="bb"
+            />
+
+        <TextView
+            android:id="@+id/telphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/margin_top"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:singleLine="true"
+            android:text="aaa"
+            android:textSize="@dimen/SmallTextSize"
+            android:layout_alignParentLeft="true" />
+	<CheckBox
+        android:id="@+id/item_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" 
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        />
+   </RelativeLayout>  
+
+</RelativeLayout>

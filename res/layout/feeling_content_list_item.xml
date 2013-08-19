@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout 
+        android:id="@+id/img_background_layout"
+        android:layout_width="@dimen/note_img_width"
+        android:layout_height="@dimen/note_img_height"
+        android:background="@drawable/video_bg"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left">
+        <ImageView 
+            android:id="@+id/feeling_img"
+            android:layout_width="@dimen/note_img_width"
+            android:layout_height="@dimen/note_img_height"
+            android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout 
+        android:id="@+id/feeing_content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img_background_layout"
+        android:layout_marginLeft="@dimen/margin_left">
+        <TextView 
+            android:id="@+id/feeling_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/LargerTextSize"
+            android:text="心情不错"/>
+        <TextView 
+            android:id="@+id/feeling_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/SmallTextSize"
+            android:text="2013.6.10"
+            android:layout_below="@id/feeling_content"/>
+        <RelativeLayout 
+            android:id="@+id/feeling_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/person_head_edit_margin_top"
+            android:layout_below="@id/feeling_time">
+            <ImageView
+                    android:id="@+id/first_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:src="@drawable/feeling_star" />
+
+                <ImageView
+                    android:id="@+id/second_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/first_star"
+                    android:src="@drawable/feeling_star" />
+
+                <ImageView
+                    android:id="@+id/third_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/second_star"
+                    android:src="@drawable/feeling_star" />
+
+                <ImageView
+                    android:id="@+id/four_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/third_star"
+                    android:src="@drawable/feeling_star" />
+
+                <ImageView
+                    android:id="@+id/five_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/person_detail_photo_margin_left"
+                    android:layout_toRightOf="@id/four_star"
+                    android:src="@drawable/feeling_star" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

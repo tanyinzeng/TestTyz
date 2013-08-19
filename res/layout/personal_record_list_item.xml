@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/record_layout"
+        android:background="@drawable/test1">
+        <ImageView 
+        android:id="@+id/record_list_img"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/record_img_height"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top"
+        />
+    </RelativeLayout>
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/record_layout"
+        android:layout_alignRight="@id/record_layout"
+        android:layout_alignParentBottom="true"
+         android:background="@drawable/test">
+        <TextView 
+        android:id="@+id/record_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_top"
+        android:text="测试测试"/>
+        <TextView 
+        android:id="@+id/record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/record_title"
+        android:layout_marginBottom="@dimen/margin_top"
+        android:text="测试测试"/>
+    </RelativeLayout>
+    
+</RelativeLayout>

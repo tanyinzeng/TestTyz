@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/video_test_layout"
+    android:layout_width="fill_parent"
+    android:background="@drawable/video_05"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/top_title"
+        android:layout_width="@dimen/video_width"
+        android:layout_height="@dimen/video_height"
+        android:background="@drawable/video_06" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/category"
+            android:textColor="@color/white"
+            android:textSize="@dimen/LargestTextSize" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="@dimen/video_width"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top_title" >
+    </ListView>
+
+</RelativeLayout>

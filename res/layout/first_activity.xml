@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linn_first_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/person_photo_video"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/person_detail_photo_margin_top"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/photo_video_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/photo_video" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/photo_video_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/photo_video_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/person_sms"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/sms_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/sms" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sms_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/sms_title" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linn_second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linn_first_layout" >
+
+        <RelativeLayout
+            android:id="@+id/person_notebook"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/person_detail_photo_margin_top"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_personal_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/notebook_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/notebook" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notebook_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/notebook_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/person_project_schedle"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/person_detail_photo_margin_top"
+            android:layout_marginTop="@dimen/person_detail_personal_margin_top"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background" >
+
+            <ImageView
+                android:id="@+id/project_schedle_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_img_margin_top"
+                android:src="@drawable/project_schedle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/project_schedle_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/person_detail_photo_margin_top"
+                android:text="@string/project_schedle_title" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

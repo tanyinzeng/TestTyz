@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.personalapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+    
+    <uses-permission android:name="android.permission.READ_SMS"/>
+     <uses-permission android:name="android.permission.READ_CONTACTS" >
+    </uses-permission>
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:name=".PersonalApplication"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".TestActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".SlidingMenuActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+       <activity android:name=".PhotoActivity"
+           android:screenOrientation="portrait"
+           ></activity> 
+        <activity android:name=".SmsActivity"
+            android:screenOrientation="portrait"
+            ></activity> 
+        <activity android:name=".SmsMainActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".CostSpendingActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".NoteBookActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".ProjectArrgantActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".PlayActivity"
+            android:screenOrientation="landscape"
+            ></activity>
+        <activity android:name=".ScoreFeelingActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".MoreActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name="com.example.test.PersonalListAppActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".PersonalAppActivity1"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".ShowPhotoItemActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".SLContactActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".PersonalRecordActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".PersonMyPicActivity"></activity>
+        <receiver android:name=".CallAlarm" android:process=":remote" />
+        <activity android:name=".AlarmAlert"
+              android:label="@string/app_name">
+        </activity>
+        <service android:name=".UploadService"
+            android:process=".message"></service>
+    </application>
+
+</manifest>

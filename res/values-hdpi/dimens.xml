@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!--textSize  -->
+    <dimen name="LargestTextSize">20sp</dimen>
+    <dimen name="LargerTextSize">18sp</dimen>
+    <dimen name="LargeTextSize">16sp</dimen>
+    <dimen name="SmallTextSize">14sp</dimen>
+    
+    <dimen name="margin_left">10dip</dimen>
+    <dimen name="margin_right">10dip</dimen>
+    <dimen name="margin_top">6dip</dimen>
+    <dimen name="person_head_edit_margin_top">5dip</dimen>
+    
+    <dimen name="person_detail_photo_margin_left">2dp</dimen>
+    <dimen name="person_detail_photo_margin_top">4dp</dimen>
+    <dimen name="person_detail_personal_margin_top">4dp</dimen>
+    
+    <dimen name="person_img_margin_top">8dip</dimen>
+    
+    <dimen name="person_cost_spending_second_margin_left">15dip</dimen>
+    <dimen name="person_cost_spending_second_margin_top">15dip</dimen>
+    
+    <dimen name="login_tv_margin_left">30dip</dimen>
+    
+    <dimen name="moreAppWidth">72px</dimen>
+    
+    <dimen name="personal_head_width">120px</dimen>
+    <dimen name="note_img_width">100px</dimen>
+    <dimen name="note_img_height">70px</dimen>
+    
+    <dimen name="submit_width">85px</dimen>
+    <dimen name="submit_height">90px</dimen>
+    <dimen name="submit_img_width">80px</dimen>
+    <dimen name="submit_img_height">83px</dimen>
+    
+    <dimen name="record_img_width">280px</dimen>
+	<dimen name="record_img_height">240px</dimen>
+	
+	<dimen name="more_img_width">450px</dimen>
+	<dimen name="more_img_height">250px</dimen>
+	
+	<dimen name="note_adapter_img_width">140px</dimen>
+	<dimen name="note_adapter_img_height">100px</dimen>
+	<dimen name="note_adapter_img_width_back">150px</dimen>
+	<dimen name="note_adapter_img_height_back">110px</dimen>
+	<dimen name="view_flow_height">800px</dimen>
+	
+	<dimen name="video_width">240px</dimen>
+	<dimen name="video_height">80px</dimen>
+	
+	<dimen name="sms_height">50px</dimen>
+	<dimen name="sms_head_img_width">60px</dimen>
+	<dimen name="sms_head_img_height">60px</dimen>
+	
+	<dimen name="person_img_head_height">302px</dimen>
+	
+	<dimen name="person_head_width">120px</dimen>
+	<dimen name="person_head_height">110px</dimen>
+	
+	<dimen name="add_pic_width">120px</dimen>
+	<dimen name="add_pic_height">110px</dimen>
+	
+	<dimen name="forward_date_width">130px</dimen>
+	<dimen name="forward_date_height">51px</dimen>
+	
+	<dimen name="head_title_height">70px</dimen>
+	
+	<dimen name="video_bg_width">200px</dimen>
+	<dimen name="video_bg_height">150px</dimen>
+	  
+	<dimen name="record_listview_height">60px</dimen>
+	
+	<dimen name="add_width">140.0dip</dimen>
+	
+	
+</resources>
